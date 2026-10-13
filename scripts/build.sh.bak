@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+set -euo pipefail
+cd "$(dirname "$0")/.."
+mkdir -p bin
+go test ./...
+go vet ./...
+go build -trimpath -ldflags="-s -w" -o bin/btc-kit .
+echo "Built bin/btc-kit"
